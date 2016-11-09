@@ -1,6 +1,5 @@
 var mongoose = require("mongoose")
 var Schema = mongoose.Schema
-mongoose.connect("mongodb://localhost/recipies")
 
 var IngredientSchema = new Schema({
   name: String,
@@ -64,6 +63,6 @@ var martini = new Recipe({
 martini.ingredients.push(gin)
 martini.ingredients.push(vermouth)
 
-console.log(martini)
+mongoose.connect("mongodb://localhost/recipies")
 
-module.export = mongoose
+module.exports = mongoose
