@@ -21,9 +21,18 @@ app.use(parser.urlencoded({extended:true}))
 
 app.get("/", function(req, res){
   Recipe.find({}).then(function(recipes){
+    console.log(recipes);
   res.render("home", {
-    recipes: recipes
+    recipes
   })
+  })
+})
+
+app.get("/recipes/:name", function(req, res){
+  Recipe.findOne({name: req.params.name}).then(recipe => {
+    res.render("show", {
+      recipe
+    })
   })
 })
 

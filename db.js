@@ -15,6 +15,7 @@ var RecipeSchema = new Schema({
   ingredients: [IngredientSchema],
 })
 
+
 var Ingredient = mongoose.model("Ingredient", IngredientSchema)
 var Recipe = mongoose.model("Recipe", RecipeSchema)
 
@@ -34,7 +35,7 @@ var pBFudge = new Recipe({
   name: "Peanut Butter Fudge",
   servingSize: 48,
   cookTime: 80,
-  instructuons: "Line an 8x8-inch baking dish with plastic wrap long enough to overhang the dish by several inches on each side. Place broken coating into a large glass microwave-safe bowl and melt on low power in microwave oven, about 5 minutes, stirring after every 30 seconds to 1 minute. When coating is smooth and creamy, stir peanut butter into coating until fudge is thoroughly combined. Spread fudge into the prepared baking dish. Refrigerate fudge until set, 1 to 2 hours. Lift fudge out of the pan using the plastic wrap for handles and slice into squares with a pizza cutter.",
+  instructions: "Line an 8x8-inch baking dish with plastic wrap long enough to overhang the dish by several inches on each side. Place broken coating into a large glass microwave-safe bowl and melt on low power in microwave oven, about 5 minutes, stirring after every 30 seconds to 1 minute. When coating is smooth and creamy, stir peanut butter into coating until fudge is thoroughly combined. Spread fudge into the prepared baking dish. Refrigerate fudge until set, 1 to 2 hours. Lift fudge out of the pan using the plastic wrap for handles and slice into squares with a pizza cutter.",
   // ingredients: [pb, sugar]
 })
 
@@ -63,6 +64,32 @@ var martini = new Recipe({
 martini.ingredients.push(gin)
 martini.ingredients.push(vermouth)
 
-mongoose.connect("mongodb://localhost/recipies")
+Recipe.remove({}, err => {
+  console.log(err);
+})
+Ingredient.remove({}, err => {
+  console.log(err);
+})
+
+pBFudge.save((err, e) => {
+  console.log(err);
+})
+sugar.save((err, e) => {
+  console.log(err);
+})
+pB.save((err, e) => {
+  console.log(err);
+})
+martini.save((err, e) => {
+  console.log(err);
+})
+gin.save((err, e) => {
+  console.log(err);
+})
+vermouth.save((err, e) => {
+  console.log(err);
+})
+
+mongoose.connect("mongodb://localhost/recipes")
 
 module.exports = mongoose

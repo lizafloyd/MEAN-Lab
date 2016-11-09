@@ -1,3 +1,6 @@
 <h2>Index</h2>
 
-{{recipes}}
+<h3>hello</h3>
+{{#each recipes as |recipe index|}}
+<p><a href="/recipes/{{recipe.name}}">{{recipe.name}}</a></p>
+{{/each}}
